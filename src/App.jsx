@@ -1,16 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { ThemeProvider } from '@features/theme/ThemeProvider';
+import { ThemeToggle } from '@features/theme/ThemeToggle';
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects/:id" element={<ProjectDetailsPage />} />
-        <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/resume" element={<ResumePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <ThemeToggle />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:id" element={<ProjectDetailsPage />} />
+          <Route path="/skills" element={<SkillsPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
