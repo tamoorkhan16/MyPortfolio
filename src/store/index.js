@@ -1,0 +1,11 @@
+import { configureStore } from '@reduxjs/toolkit';
+
+export const store = configureStore({
+  reducer: {
+    // Reducers will be added in subsequent phases
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // For Framer Motion animation states
+    }),
+});
