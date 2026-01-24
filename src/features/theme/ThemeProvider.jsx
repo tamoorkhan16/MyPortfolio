@@ -8,7 +8,10 @@ import {
   selectThemeMode,
   selectUseSystemPreference,
   setSystemPreference,
+  setTheme,
 } from './themeSlice';
+
+const DEFAULT_THEME = 'light';
 
 export function ThemeProvider({ children }) {
   const dispatch = useDispatch();
@@ -23,7 +26,17 @@ export function ThemeProvider({ children }) {
   // Apply theme tokens to document
   useEffect(() => {
     const root = document.documentElement;
-    const themeTokens = themes[themeMode];
+    
+    // Validate theme mode and fall back to default if invalid
+    const validTheme = themes[themeMode] ? themeMode : DEFAULT_THEME;
+    
+    // Self-heal: if theme mode is invalid, dispatch setTheme to update state
+    if (validTheme !== themeMode) {
+      dispatch(setTheme(validTheme));
+      return; // Exit early and let the effect run again with valid theme
+    }
+
+    const themeTokens = themes[validTheme];
 
     // Add transition class
     root.classList.add('theme-transitioning');
@@ -34,7 +47,7 @@ export function ThemeProvider({ children }) {
     });
 
     // Set data-theme attribute for CSS targeting
-    root.setAttribute('data-theme', themeMode);
+    root.setAttribute('data-theme', validTheme);
 
     // Remove transition class after animation completes
     const timer = setTimeout(() => {
@@ -42,7 +55,7 @@ export function ThemeProvider({ children }) {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [themeMode]);
+  }, [themeMode, dispatch]);
 
   // Setup system preference detection
   useEffect(() => {

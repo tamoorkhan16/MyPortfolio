@@ -91,6 +91,40 @@ export const themes = {
     'transition-slow': '350ms ease-in-out',
     'transition-slower': '500ms ease-in-out',
 
+    // Animation Durations (in milliseconds for CSS, convert to seconds for Framer Motion)
+    'duration-instant': '100ms',
+    'duration-fast': '150ms',
+    'duration-base': '250ms',
+    'duration-slow': '350ms',
+    'duration-slower': '500ms',
+    'duration-slowest': '700ms',
+
+    // Spring Physics Configurations
+    'spring-gentle-stiffness': '100',
+    'spring-gentle-damping': '15',
+    'spring-standard-stiffness': '200',
+    'spring-standard-damping': '20',
+    'spring-snappy-stiffness': '300',
+    'spring-snappy-damping': '20',
+    'spring-bouncy-stiffness': '300',
+    'spring-bouncy-damping': '10',
+    'spring-stiff-stiffness': '400',
+    'spring-stiff-damping': '25',
+
+    // Easing Curves (as CSS cubic-bezier strings)
+    'ease-apple': 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+    'ease-apple-in': 'cubic-bezier(0.42, 0.0, 1, 1)',
+    'ease-apple-out': 'cubic-bezier(0.0, 0.0, 0.58, 1)',
+    'ease-expo-in': 'cubic-bezier(0.95, 0.05, 0.795, 0.034)',
+    'ease-expo-out': 'cubic-bezier(0.19, 1.0, 0.22, 1.0)',
+    'ease-expo-in-out': 'cubic-bezier(0.87, 0.0, 0.13, 1.0)',
+    'ease-circ-in': 'cubic-bezier(0.6, 0.04, 0.98, 0.335)',
+    'ease-circ-out': 'cubic-bezier(0.075, 0.82, 0.165, 1.0)',
+    'ease-circ-in-out': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+    'ease-back-in': 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+    'ease-back-out': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    'ease-back-in-out': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+
     // Glassmorphism
     'glass-blur': '10px',
     'glass-opacity': '0.8',
@@ -187,8 +221,172 @@ export const themes = {
     'transition-slow': '350ms ease-in-out',
     'transition-slower': '500ms ease-in-out',
 
+    // Animation Durations (in milliseconds for CSS, convert to seconds for Framer Motion)
+    'duration-instant': '100ms',
+    'duration-fast': '150ms',
+    'duration-base': '250ms',
+    'duration-slow': '350ms',
+    'duration-slower': '500ms',
+    'duration-slowest': '700ms',
+
+    // Spring Physics Configurations
+    'spring-gentle-stiffness': '100',
+    'spring-gentle-damping': '15',
+    'spring-standard-stiffness': '200',
+    'spring-standard-damping': '20',
+    'spring-snappy-stiffness': '300',
+    'spring-snappy-damping': '20',
+    'spring-bouncy-stiffness': '300',
+    'spring-bouncy-damping': '10',
+    'spring-stiff-stiffness': '400',
+    'spring-stiff-damping': '25',
+
+    // Easing Curves (as CSS cubic-bezier strings)
+    'ease-apple': 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+    'ease-apple-in': 'cubic-bezier(0.42, 0.0, 1, 1)',
+    'ease-apple-out': 'cubic-bezier(0.0, 0.0, 0.58, 1)',
+    'ease-expo-in': 'cubic-bezier(0.95, 0.05, 0.795, 0.034)',
+    'ease-expo-out': 'cubic-bezier(0.19, 1.0, 0.22, 1.0)',
+    'ease-expo-in-out': 'cubic-bezier(0.87, 0.0, 0.13, 1.0)',
+    'ease-circ-in': 'cubic-bezier(0.6, 0.04, 0.98, 0.335)',
+    'ease-circ-out': 'cubic-bezier(0.075, 0.82, 0.165, 1.0)',
+    'ease-circ-in-out': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+    'ease-back-in': 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+    'ease-back-out': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    'ease-back-in-out': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+
     // Glassmorphism
     'glass-blur': '10px',
     'glass-opacity': '0.85',
+  },
+  custom: {
+    // Colors - Vibrant purple/cyan theme
+    'color-primary': '#6366f1',
+    'color-secondary': '#ec4899',
+    'color-accent': '#06b6d4',
+    'color-accent-hover': '#0891b2',
+    'color-text': '#1f2937',
+    'color-text-secondary': '#4b5563',
+    'color-text-tertiary': '#9ca3af',
+    'color-border': '#e5e7eb',
+    'color-border-hover': '#d1d5db',
+    'color-background': '#f9fafb',
+    'color-background-secondary': '#f3f4f6',
+    'color-background-tertiary': '#eff6ff',
+    'color-surface': '#ffffff',
+    'color-surface-hover': '#f3f4f6',
+    'color-success': '#10b981',
+    'color-success-light': '#d1fae5',
+    'color-warning': '#f59e0b',
+    'color-warning-light': '#fef3c7',
+    'color-error': '#ef4444',
+    'color-error-light': '#fee2e2',
+    'color-info': '#6366f1',
+    'color-info-light': '#e0e7ff',
+
+    // Typography
+    'font-family-base': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    'font-family-heading': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    'font-family-mono': '"Monaco", "Menlo", "Ubuntu Mono", monospace',
+
+    'font-size-xs': '12px',
+    'font-size-sm': '14px',
+    'font-size-base': '16px',
+    'font-size-lg': '18px',
+    'font-size-xl': '24px',
+    'font-size-2xl': '32px',
+    'font-size-3xl': '48px',
+    'font-size-4xl': '64px',
+    'font-size-5xl': '80px',
+
+    'font-weight-light': '300',
+    'font-weight-regular': '400',
+    'font-weight-medium': '500',
+    'font-weight-semibold': '600',
+    'font-weight-bold': '700',
+
+    'line-height-tight': '1.2',
+    'line-height-normal': '1.6',
+    'line-height-relaxed': '1.8',
+    'line-height-loose': '2',
+
+    // Spacing
+    'spacing-xs': '4px',
+    'spacing-sm': '8px',
+    'spacing-md': '16px',
+    'spacing-lg': '24px',
+    'spacing-xl': '32px',
+    'spacing-2xl': '48px',
+    'spacing-3xl': '64px',
+    'spacing-4xl': '96px',
+    'spacing-5xl': '128px',
+
+    // Border Radius
+    'radius-sm': '4px',
+    'radius-md': '8px',
+    'radius-lg': '12px',
+    'radius-xl': '16px',
+    'radius-2xl': '20px',
+    'radius-full': '9999px',
+
+    // Shadows
+    'shadow-xs': '0 1px 3px 0 rgba(99, 102, 241, 0.1)',
+    'shadow-sm': '0 2px 4px 0 rgba(99, 102, 241, 0.12)',
+    'shadow-md': '0 4px 6px -1px rgba(99, 102, 241, 0.15)',
+    'shadow-lg': '0 10px 15px -3px rgba(99, 102, 241, 0.2)',
+    'shadow-xl': '0 20px 25px -5px rgba(99, 102, 241, 0.25)',
+    'shadow-2xl': '0 25px 50px -12px rgba(99, 102, 241, 0.3)',
+
+    // Z-index
+    'z-dropdown': '1000',
+    'z-sticky': '1020',
+    'z-modal-backdrop': '1040',
+    'z-modal': '1050',
+    'z-popover': '1060',
+    'z-tooltip': '1070',
+
+    // Transitions
+    'transition-fast': '150ms ease-in-out',
+    'transition-base': '250ms ease-in-out',
+    'transition-slow': '350ms ease-in-out',
+    'transition-slower': '500ms ease-in-out',
+
+    // Animation Durations (in milliseconds for CSS, convert to seconds for Framer Motion)
+    'duration-instant': '100ms',
+    'duration-fast': '150ms',
+    'duration-base': '250ms',
+    'duration-slow': '350ms',
+    'duration-slower': '500ms',
+    'duration-slowest': '700ms',
+
+    // Spring Physics Configurations
+    'spring-gentle-stiffness': '100',
+    'spring-gentle-damping': '15',
+    'spring-standard-stiffness': '200',
+    'spring-standard-damping': '20',
+    'spring-snappy-stiffness': '300',
+    'spring-snappy-damping': '20',
+    'spring-bouncy-stiffness': '300',
+    'spring-bouncy-damping': '10',
+    'spring-stiff-stiffness': '400',
+    'spring-stiff-damping': '25',
+
+    // Easing Curves (as CSS cubic-bezier strings)
+    'ease-apple': 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+    'ease-apple-in': 'cubic-bezier(0.42, 0.0, 1, 1)',
+    'ease-apple-out': 'cubic-bezier(0.0, 0.0, 0.58, 1)',
+    'ease-expo-in': 'cubic-bezier(0.95, 0.05, 0.795, 0.034)',
+    'ease-expo-out': 'cubic-bezier(0.19, 1.0, 0.22, 1.0)',
+    'ease-expo-in-out': 'cubic-bezier(0.87, 0.0, 0.13, 1.0)',
+    'ease-circ-in': 'cubic-bezier(0.6, 0.04, 0.98, 0.335)',
+    'ease-circ-out': 'cubic-bezier(0.075, 0.82, 0.165, 1.0)',
+    'ease-circ-in-out': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+    'ease-back-in': 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+    'ease-back-out': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+    'ease-back-in-out': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+
+    // Glassmorphism
+    'glass-blur': '10px',
+    'glass-opacity': '0.9',
   },
 };

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
 const SYSTEM_PREFERENCE_STORAGE_KEY = 'portfolio-use-system-theme';
+const VALID_THEMES = ['light', 'dark', 'custom'];
 
 const getSystemPreference = () => {
   if (typeof window === 'undefined') return 'light';
@@ -47,12 +48,21 @@ const themeSlice = createSlice({
       }
     },
     setTheme: (state, action) => {
-      state.mode = action.payload;
-      localStorage.setItem(THEME_STORAGE_KEY, action.payload);
+      if (VALID_THEMES.includes(action.payload)) {
+        state.mode = action.payload;
+        state.useSystemPreference = false;
+        localStorage.setItem(THEME_STORAGE_KEY, action.payload);
+        localStorage.setItem(SYSTEM_PREFERENCE_STORAGE_KEY, 'false');
+      }
     },
     toggleTheme: (state) => {
-      state.mode = state.mode === 'light' ? 'dark' : 'light';
+      const themeSequence = ['light', 'dark', 'custom'];
+      const currentIndex = themeSequence.indexOf(state.mode);
+      const nextIndex = (currentIndex + 1) % themeSequence.length;
+      state.mode = themeSequence[nextIndex];
+      state.useSystemPreference = false;
       localStorage.setItem(THEME_STORAGE_KEY, state.mode);
+      localStorage.setItem(SYSTEM_PREFERENCE_STORAGE_KEY, 'false');
     },
     setSystemPreference: (state, action) => {
       state.systemPreference = action.payload;

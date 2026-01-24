@@ -1,0 +1,139 @@
+/* Mobile Menu Styles */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+  backdrop-filter: blur(4px);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-background);
+  z-index: 999;
+  padding-top: 70px;
+  padding-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-xl);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuLinks {
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-lg);
+  flex: 1;
+}
+
+.menuLink {
+  display: block;
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.menuLink:hover {
+  background: var(--color-background-secondary);
+  color: var(--color-accent);
+}
+
+.menuLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  background: var(--color-background-secondary);
+}
+
+.menuLink.active {
+  color: var(--color-accent);
+  background: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid var(--color-accent);
+  padding-left: calc(var(--spacing-lg) - 3px);
+}
+
+/* Close Button */
+
+.closeButton {
+  align-self: flex-end;
+  margin-right: var(--spacing-lg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  display: flex;
+  gap: 6px;
+  position: relative;
+  width: 28px;
+  height: 24px;
+}
+
+.closeButton span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.closeButton span:first-child {
+  transform: rotate(45deg);
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+}
+
+.closeButton span:last-child {
+  transform: rotate(-45deg);
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+}
+
+.closeButton:hover span {
+  background: var(--color-accent);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menuLink,
+  .closeButton {
+    transition: none;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .menu {
+    max-width: 100%;
+  }
+
+  .menuLinks {
+    padding: var(--spacing-md);
+  }
+
+  .menuLink {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
