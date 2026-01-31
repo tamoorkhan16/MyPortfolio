@@ -47,6 +47,15 @@ const navigationCommands = [
     keywords: ['skills', 'expertise', 'technologies', 'tech'],
   },
   {
+    id: 'nav-skills-search',
+    label: 'Search Skills',
+    description: 'Find and explore specific skills',
+    icon: '🔍',
+    action: '#skills',
+    type: 'navigation',
+    keywords: ['search', 'skills', 'find', 'lookup'],
+  },
+  {
     id: 'nav-resume',
     label: 'Resume',
     description: 'Download or view resume',

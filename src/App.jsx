@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import { ThemeProvider } from '@features/theme/ThemeProvider';
 import { Navigation } from '@components/Navigation/Navigation';
@@ -9,8 +10,30 @@ import ProjectsSection from '@components/Sections/ProjectsSection';
 import SkillsSection from '@components/Sections/SkillsSection';
 import ResumeSection from '@components/Sections/ResumeSection';
 import ContactSection from '@components/Sections/ContactSection';
+import ProjectDetail from '@features/projects/ProjectDetail';
+import ResumeHub from '@features/resume/ResumeHub';
 
 import { useKeyboardShortcut } from '@hooks/useKeyboardShortcut';
+
+/**
+ * AppRoutes Component
+ * Handles page routing with animations using location context
+ */
+function AppRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/resume" element={<ResumePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -26,16 +49,8 @@ function App() {
         isOpen={isCommandPaletteOpen}
         onClose={() => setIsCommandPaletteOpen(false)}
       />
-      <Router>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects/:id" element={<ProjectDetailsPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/resume" element={<ResumePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </Router>
+      <Navigation />
+      <AppRoutes />
     </ThemeProvider>
   );
 }
@@ -72,11 +87,11 @@ function HomePage() {
 /**
  * Project Details Page
  *
- * Individual project showcase page (placeholder for future implementation)
+ * Individual project showcase page with image gallery and detailed information
  */
-function ProjectDetailsPage() {
-  return <div style={{ padding: '100px 20px', textAlign: 'center' }}>Project Details Page</div>;
-}
+// function ProjectDetailsPage() {
+//   return <div style={{ padding: '100px 20px', textAlign: 'center' }}>Project Details Page</div>;
+// }
 
 /**
  * Skills Page
@@ -90,10 +105,14 @@ function SkillsPage() {
 /**
  * Resume Page
  *
- * Full resume and work history (placeholder for future implementation)
+ * Full resume and work history with PDF export and live preview
  */
 function ResumePage() {
-  return <div style={{ padding: '100px 20px', textAlign: 'center' }}>Resume Hub Page</div>;
+  return (
+    <main>
+      <ResumeHub />
+    </main>
+  );
 }
 
 /**

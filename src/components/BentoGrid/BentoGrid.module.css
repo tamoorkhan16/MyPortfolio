@@ -1,0 +1,59 @@
+.gridWrapper {
+  width: 100%;
+  padding: 0;
+}
+
+.bentoGrid {
+  display: grid;
+  gap: var(--spacing-lg, 2rem);
+  grid-auto-rows: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: var(--spacing-xl, 4rem) var(--spacing-lg, 2rem);
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  text-align: center;
+  background: var(--color-background);
+  border-radius: var(--radius-lg, 1rem);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.emptyState p {
+  margin: 0;
+  max-width: 400px;
+}
+
+/* Responsive Breakpoints */
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .bentoGrid {
+    gap: var(--spacing-md, 1.5rem);
+  }
+}
+
+/* Mobile (below 640px) */
+@media (max-width: 639px) {
+  .bentoGrid {
+    gap: var(--spacing-md, 1.5rem);
+  }
+
+  .bentoGrid > div {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+}
+
+/* Performance optimizations */
+.bentoGrid > div {
+  will-change: transform;
+  contain: layout style paint;
+}

@@ -1,0 +1,229 @@
+/**
+ * CertificationsSection Module Styles
+ */
+
+.section {
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.heading {
+  margin: 0 0 2.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, rgb(139, 92, 246), rgb(59, 130, 246));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.logo {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.card:hover .name {
+  color: rgb(139, 92, 246);
+}
+
+.issuer {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.date {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  color: rgb(139, 92, 246);
+  font-weight: 500;
+}
+
+.credentialId {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-family: 'Courier New', monospace;
+  word-break: break-all;
+}
+
+.arrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Print Styles */
+@media print {
+  .section {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: #111827;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    page-break-inside: avoid;
+    padding: 1rem;
+  }
+
+  .card:hover {
+    background: white;
+    border-color: #e5e7eb;
+    box-shadow: none;
+  }
+
+  .name {
+    color: #111827;
+  }
+
+  .issuer {
+    color: #6b7280;
+  }
+
+  .date {
+    color: #4b5563;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 0;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 1.5rem 0;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .issuer {
+    font-size: 0.875rem;
+  }
+}

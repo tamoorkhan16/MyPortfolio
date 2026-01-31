@@ -17,6 +17,7 @@ export default defineConfig({
       '@styles': path.resolve(__dirname, './src/styles'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@store': path.resolve(__dirname, './src/store'),
+      '@data': path.resolve(__dirname, './src/data'),
     },
     extensions: ['.js', '.jsx'],
   },

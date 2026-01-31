@@ -1,0 +1,162 @@
+.lightboxContainer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal, 1050);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.lightbox {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1400px;
+  max-height: 800px;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lightboxImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Navigation Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-fast) ease-out;
+  z-index: 11;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navButton:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-fast) ease-out;
+  z-index: 12;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.closeButton:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Image Counter */
+.imageCounter {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lightbox {
+    width: 95vw;
+    height: 95vh;
+    max-width: none;
+    max-height: none;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .closeButton {
+    width: 40px;
+    height: 40px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .imageCounter {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .navButton,
+  .closeButton {
+    backdrop-filter: none;
+    transition: none;
+  }
+}

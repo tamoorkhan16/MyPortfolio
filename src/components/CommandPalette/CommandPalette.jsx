@@ -15,19 +15,17 @@
  * - Screen reader support
  */
 
-import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Portal from '@components/Portal/Portal';
-import { useKeyboardShortcut } from '@hooks/useKeyboardShortcut';
-import { useFocusTrap } from '@hooks/useFocusTrap';
-import { fadeIn, fadeInScale, staggerChildrenFast } from '@utils/animations';
-import { tween } from '@utils/animations';
-import { easeOutExpo } from '@utils/easings';
-import { fuzzySearch } from '@utils/fuzzySearch';
-import { COMMAND_ITEMS } from '@utils/commandPaletteData';
 import { setTheme } from '@features/theme/themeSlice';
+import { useFocusTrap } from '@hooks/useFocusTrap';
+import { useKeyboardShortcut } from '@hooks/useKeyboardShortcut';
+import { fadeIn, fadeInScale, staggerChildrenFast, tween } from '@utils/animations';
+import { COMMAND_ITEMS } from '@utils/commandPaletteData';
+import { fuzzySearch } from '@utils/fuzzySearch';
 
 import styles from './CommandPalette.module.css';
 
@@ -89,6 +87,30 @@ export const CommandPalette = ({ isOpen, onClose }) => {
     onClose();
   }, [onClose]);
 
+  // Execute command - MUST be defined before useEffects that depend on it
+  const handleExecute = useCallback(
+    (command) => {
+      if (command.type === 'navigation') {
+        // Handle navigation
+        const element = document.querySelector(command.action);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else if (command.type === 'theme') {
+        // Handle theme change
+        dispatch(setTheme(command.action));
+      } else if (command.type === 'action') {
+        // Handle custom action
+        if (typeof command.action === 'function') {
+          command.action();
+        }
+      }
+
+      handleClose();
+    },
+    [dispatch, handleClose]
+  );
+
   // Handle escape key
   useEffect(() => {
     if (!isOpen) return;
@@ -104,7 +126,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, handleClose]);
 
-  // Handle arrow keys
+  // Handle arrow keys and Enter to execute
   useEffect(() => {
     if (!isOpen) return;
 
@@ -129,7 +151,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, selectedIndex, filteredItems]);
+  }, [isOpen, selectedIndex, filteredItems, handleExecute]);
 
   // Scroll selected item into view
   useEffect(() => {
@@ -143,30 +165,6 @@ export const CommandPalette = ({ isOpen, onClose }) => {
       selectedElement.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   }, [selectedIndex]);
-
-  // Execute command
-  const handleExecute = useCallback(
-    (command) => {
-      if (command.type === 'navigation') {
-        // Handle navigation
-        const element = document.querySelector(command.action);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      } else if (command.type === 'theme') {
-        // Handle theme change
-        dispatch(setTheme(command.action));
-      } else if (command.type === 'action') {
-        // Handle custom action
-        if (typeof command.action === 'function') {
-          command.action();
-        }
-      }
-
-      handleClose();
-    },
-    [dispatch, handleClose]
-  );
 
   // Handle item click
   const handleItemClick = useCallback(
@@ -284,7 +282,7 @@ export const CommandPalette = ({ isOpen, onClose }) => {
                       animate: { opacity: 1 },
                     }}
                   >
-                    <p>No results found for "{searchQuery}"</p>
+                    <p>No results found for &quot;{searchQuery}&quot;</p>
                     <p className={styles.emptyHint}>Try different keywords</p>
                   </motion.div>
                 )}

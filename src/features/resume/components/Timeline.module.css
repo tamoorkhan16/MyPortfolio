@@ -1,0 +1,208 @@
+/**
+ * Timeline Module Styles
+ * SVG-based animated timeline with responsive layout
+ */
+
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline.vertical {
+  padding: 2rem 1rem;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.item {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.item.left {
+  flex-direction: row-reverse;
+}
+
+.dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.1);
+  border: 2px solid rgb(139, 92, 246);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.dotInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(139, 92, 246), rgb(59, 130, 246));
+}
+
+.content {
+  flex: 1;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.item:hover .content {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.date {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: rgb(139, 92, 246);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.subtitle {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Print Styles */
+@media print {
+  .timeline {
+    padding: 1rem 0;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .item {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .item.left {
+    flex-direction: row;
+  }
+
+  .dot {
+    border-color: #9ca3af;
+    background: #f3f4f6;
+    width: 16px;
+    height: 16px;
+  }
+
+  .content {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+    page-break-inside: avoid;
+  }
+
+  .date {
+    color: #4b5563;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .line {
+    left: 10px;
+  }
+
+  .item,
+  .item.left {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .dot {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .content {
+    padding: 1rem;
+    margin-left: 1rem;
+  }
+
+  .item.left .content {
+    margin-left: 1rem;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline.vertical {
+    padding: 1rem 0.5rem;
+  }
+
+  .line {
+    left: 8px;
+  }
+
+  .items {
+    gap: 1.5rem;
+  }
+
+  .item {
+    gap: 0.75rem;
+  }
+
+  .content {
+    padding: 0.875rem;
+    margin-left: 0.75rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+}

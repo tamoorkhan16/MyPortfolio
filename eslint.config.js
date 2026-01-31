@@ -30,6 +30,7 @@ export default [
         alias: {
           map: [
             ['@components', './src/components'],
+            ['@data', './src/data'],
             ['@features', './src/features'],
             ['@hooks', './src/hooks'],
             ['@utils', './src/utils'],

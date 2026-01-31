@@ -1,0 +1,147 @@
+/* WorkDetailCard.module.css */
+.backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+
+.card {
+  position: absolute;
+  max-width: 600px;
+  width: 90vw;
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(139,92,246,0.18);
+  overflow: hidden;
+  z-index: 1001;
+  padding: 0;
+  border: 1.5px solid #e5e7eb;
+  animation: fadeInCard 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateX(-50%) scale(0.96); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: transparent;
+}
+
+.company {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.position {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  margin-top: 0.5rem;
+}
+
+.content {
+  padding: 1.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.achievements {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.achievement {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.achievement::before {
+  content: '';
+  position: absolute;
+  left: 0.25rem;
+  top: 0.7em;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  box-shadow: 0 0 8px rgba(139,92,246,0.18);
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(139,92,246,0.12);
+  color: #6d28d9;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.tech:hover {
+  background: rgba(59,130,246,0.18);
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #8b5cf6;
+  cursor: pointer;
+  transition: transform 0.15s;
+  z-index: 2;
+}
+
+.closeButton:hover {
+  transform: scale(1.15);
+  color: #3b82f6;
+}
+
+@media (max-width: 768px) {
+  .card {
+    left: 50%;
+    top: 10vh;
+    width: 98vw;
+    max-width: 98vw;
+    border-radius: 10px;
+    padding: 0;
+  }
+  .header {
+    padding: 1rem 1rem 0.75rem 1rem;
+  }
+  .content {
+    padding: 1rem;
+    max-height: 70vh;
+  }
+}

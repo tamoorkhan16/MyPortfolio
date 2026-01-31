@@ -1,0 +1,143 @@
+.filterBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-xl, 3rem);
+  padding: var(--spacing-lg, 2rem) 0;
+}
+
+.filterContainer {
+  display: flex;
+  gap: var(--spacing-md, 1.5rem);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: var(--spacing-md, 1.5rem);
+  background: rgba(var(--color-background-rgb), 0.5);
+  backdrop-filter: blur(var(--glass-blur, 10px));
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full, 9999px);
+}
+
+.buttonWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filterButton {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease-out;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterButton:hover {
+  color: var(--color-text);
+}
+
+.filterButton:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+.filterButton.active {
+  color: var(--color-accent);
+}
+
+.label {
+  display: inline-block;
+}
+
+.count {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-radius: 0.25rem;
+  font-weight: 700;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+  border-radius: 1.5px;
+  z-index: 1;
+  box-shadow: 0 0 12px rgba(var(--color-accent-rgb), 0.4);
+}
+
+/* Responsive Styles */
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .filterContainer {
+    padding: var(--spacing-md, 1.5rem);
+    gap: var(--spacing-sm, 1rem);
+  }
+
+  .filterButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .count {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 639px) {
+  .filterBar {
+    margin-bottom: var(--spacing-lg, 2rem);
+    padding: var(--spacing-md, 1.5rem) 0;
+  }
+
+  .filterContainer {
+    gap: var(--spacing-sm, 1rem);
+    padding: var(--spacing-sm, 1rem);
+    border-radius: var(--radius-lg, 1rem);
+  }
+
+  .filterButton {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+  }
+
+  .count {
+    display: none;
+  }
+
+  .label {
+    white-space: nowrap;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .filterButton,
+  .filterContainer {
+    transition: none;
+  }
+
+  .filterContainer {
+    backdrop-filter: none;
+  }
+}

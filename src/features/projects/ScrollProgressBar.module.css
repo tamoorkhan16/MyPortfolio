@@ -1,0 +1,21 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent-dark)
+  );
+  box-shadow: 0 2px 8px rgba(var(--color-accent-rgb), 0.3);
+  z-index: var(--z-sticky, 40);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBar {
+    transition: none;
+  }
+}

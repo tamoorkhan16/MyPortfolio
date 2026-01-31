@@ -12,12 +12,14 @@ import { motion, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef } from 'react';
 
 import ScrollIndicator from '@components/ScrollIndicator/ScrollIndicator';
+
 import { useInView } from '@hooks/useInView';
 import { useMagneticEffect } from '@hooks/useMagneticEffect';
 import { useScrollProgress } from '@hooks/useScrollProgress';
 
-import { fadeInUp, staggerChildren, hover, tap, spring } from '@utils/animations';
 import { PARALLAX_STRENGTH_SUBTLE, PARALLAX_STRENGTH, PARALLAX_STRENGTH_STRONG } from '@utils/animationConstants';
+import { fadeInUp, staggerChildren, hover, tap, spring } from '@utils/animations';
+
 import styles from './Hero.module.css';
 
 /**

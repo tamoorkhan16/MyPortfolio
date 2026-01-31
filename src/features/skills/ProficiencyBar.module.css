@@ -1,0 +1,112 @@
+.proficiencyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.skillName {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.level {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.expert {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+
+  &.intermediate {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+  }
+
+  &.beginner {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+  }
+}
+
+.percentage {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+.barContainer {
+  width: 100%;
+  height: 8px;
+  background: var(--color-surface);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.bar {
+  height: 100%;
+  border-radius: 10px;
+  will-change: width;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+
+  &.expert {
+    background: linear-gradient(90deg, #10b981, #059669);
+  }
+
+  &.intermediate {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+  }
+
+  &.beginner {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+  }
+}
+
+.experience {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .skillName {
+    font-size: 0.875rem;
+  }
+
+  .barContainer {
+    height: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    will-change: auto;
+    animation: none;
+  }
+}

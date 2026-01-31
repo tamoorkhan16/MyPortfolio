@@ -1,0 +1,160 @@
+.tooltip {
+  position: fixed;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 320px;
+  z-index: 1000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+
+  &.top::after,
+  &.bottom::after,
+  &.left::after,
+  &.right::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  &.top::after {
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &.bottom::after {
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &.left::after {
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  &.right::after {
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.skillName {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(99, 102, 241, 0.1);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.related {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.relatedLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.relatedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 4px;
+  font-size: 0.625rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .tooltip {
+    max-width: 260px;
+    padding: 0.75rem;
+  }
+
+  .skillName {
+    font-size: 0.85rem;
+  }
+
+  .description {
+    font-size: 0.75rem;
+  }
+}

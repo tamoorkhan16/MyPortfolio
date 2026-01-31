@@ -1,0 +1,136 @@
+/* WorkTimeline.module.css */
+.timeline {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: var(--color-background);
+}
+
+.svgContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.progress {
+  position: fixed;
+  left: 24px;
+  top: 80px;
+  width: 8px;
+  height: 60vh;
+  background: linear-gradient(180deg, #8b5cf6, #3b82f6);
+  border-radius: 4px;
+  z-index: 10;
+  transform-origin: top;
+  box-shadow: 0 2px 12px rgba(139,92,246,0.15);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.progressText {
+  color: #8b5cf6;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.nodes {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  height: 100%;
+}
+
+.node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: 0 2px 16px rgba(139,92,246,0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  will-change: transform;
+  border: 2px solid transparent;
+}
+
+.node:hover, .node:focus {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  transform: scale(1.15);
+  outline: 2px solid #8b5cf6;
+  z-index: 2;
+}
+
+.nodeInner {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.12);
+}
+
+.nodeLabel {
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  background: rgba(255,255,255,0.85);
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(139,92,246,0.08);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding: 2rem 0;
+  }
+  .svgContainer {
+    left: 0;
+    width: 60px;
+  }
+  .progress {
+    left: 8px;
+    top: 60px;
+    height: 40vh;
+  }
+  .node {
+    left: 0 !important;
+  }
+  .nodeLabel {
+    left: 70px;
+    font-size: 0.8rem;
+  }
+}
+
+@media print {
+  .svgContainer, .progress {
+    display: none !important;
+  }
+  .node, .nodeLabel {
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #222 !important;
+  }
+}

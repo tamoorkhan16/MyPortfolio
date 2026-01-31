@@ -1,0 +1,383 @@
+/* Preview mode styles (matches print) */
+.container.previewMode {
+  background: white !important;
+  color: #1f2937 !important;
+  padding: 2rem !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 1px #e5e7eb !important;
+}
+
+.header.previewMode {
+  background: white !important;
+  border: none !important;
+  border-bottom: 2px solid #111827 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  margin-bottom: 2rem !important;
+  padding: 2rem 0 !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.actions.previewMode {
+  display: none !important;
+}
+/* Global print-mode for PDF export */
+:global(.print-mode) {
+  background: white !important;
+  color: #1f2937 !important;
+  padding: 2rem !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 1px #e5e7eb !important;
+}
+
+:global(.print-mode) *::selection {
+  background: rgba(139, 92, 246, 0.3) !important;
+}
+
+:global(.print-mode) section {
+  break-inside: avoid !important;
+}
+/**
+ * ResumeHub Module Styles
+ * Main resume section styling with print-optimized layout
+ */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.personalInfo {
+  flex: 1;
+}
+
+.name {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, rgb(139, 92, 246), rgb(59, 130, 246));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.summary {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contactLink {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contactLink:hover {
+  color: rgb(139, 92, 246);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  padding: 0.5rem 1rem;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 6px;
+  color: rgb(139, 92, 246);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.socialLink:hover {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-self: flex-start;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+  color: rgb(139, 92, 246);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button:hover:not(:disabled) {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.downloadButton {
+  background: linear-gradient(135deg, rgb(139, 92, 246), rgb(59, 130, 246));
+  border-color: transparent;
+  color: white;
+}
+
+.downloadButton:hover:not(:disabled) {
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+}
+
+.previewActive {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: rgb(34, 197, 94);
+}
+
+.previewActive:hover {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.content {
+  transition: all 0.3s ease;
+}
+
+.content.printMode {
+  background: white;
+  color: #1f2937;
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px #e5e7eb;
+}
+
+.content.printMode *::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+.content.printMode section {
+  break-inside: avoid;
+}
+
+/* Print Styles */
+@media print {
+  .container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .header {
+    background: white;
+    border: none;
+    border-bottom: 2px solid #111827;
+    border-radius: 0;
+    backdrop-filter: none;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .name {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: #111827;
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .title {
+    color: #4b5563;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary {
+    display: none;
+  }
+
+  .actions {
+    display: none;
+  }
+
+  .contactInfo {
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contactLink {
+    font-size: 0.85rem;
+    color: #4b5563;
+  }
+
+  .socialLinks {
+    gap: 0.5rem;
+  }
+
+  .socialLink {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .content {
+    background: white;
+    color: #1f2937;
+    padding: 0;
+  }
+
+  .content.printMode {
+    background: white;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .summary {
+    font-size: 0.9rem;
+  }
+
+  .contactInfo {
+    gap: 1rem;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .button {
+    flex: 1;
+    padding: 0.625rem 1rem;
+  }
+
+  .content.printMode {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .name {
+    font-size: 1.75rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .contactInfo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contactLink {
+    font-size: 0.85rem;
+  }
+
+  .socialLinks {
+    flex-direction: column;
+  }
+
+  .socialLink {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .content.printMode {
+    padding: 1rem;
+  }
+}
